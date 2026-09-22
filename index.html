@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bah King — Regras da Noite</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 50% -10%, #252b3d 0%, #10131b 45%, #080a0f 100%);
+            color: #e5e7eb;
+            font-family: 'Inter', sans-serif;
+            padding: 50px 20px;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(150, 150, 190, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 70%, rgba(120, 120, 180, 0.04), transparent 25%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .moon {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: #d8d9df;
+            box-shadow:
+                0 0 25px rgba(210, 215, 235, 0.25),
+                0 0 70px rgba(150, 160, 200, 0.08);
+            position: relative;
+        }
+
+        .moon::after {
+            content: "";
+            position: absolute;
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background: #10131b;
+            left: 22px;
+            top: -8px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 500;
+            letter-spacing: 6px;
+            font-size: clamp(2rem, 6vw, 3.4rem);
+            color: #eeeeF2;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            margin-top: 12px;
+            color: #898fa1;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+        }
+
+        .line {
+            width: 100px;
+            height: 1px;
+            background: #656b7d;
+            margin: 25px auto 0;
+            opacity: 0.6;
+        }
+
+        .intro {
+            text-align: center;
+            color: #aeb2bf;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: 0 auto 45px;
+            font-size: 0.95rem;
+        }
+
+        .rules {
+            display: grid;
+            gap: 18px;
+        }
+
+        .rule {
+            position: relative;
+            background: rgba(18, 21, 29, 0.78);
+            border: 1px solid rgba(125, 130, 150, 0.14);
+            border-radius: 10px;
+            padding: 25px 28px 25px 75px;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .rule:hover {
+            transform: translateY(-3px);
+            border-color: rgba(170, 175, 200, 0.3);
+        }
+
+        .number {
+            position: absolute;
+            left: 25px;
+            top: 25px;
+            font-family: 'Cinzel', serif;
+            color: #73798c;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .rule h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #e2e3e8;
+            margin-bottom: 9px;
+            letter-spacing: 1px;
+        }
+
+        .rule p {
+            color: #999eae;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .closing {
+            text-align: center;
+            margin: 55px auto 35px;
+            max-width: 600px;
+            color: #858b9b;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #c8cad3;
+            border: 1px solid rgba(150, 155, 175, 0.2);
+            padding: 11px 20px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: all 0.25s ease;
+        }
+
+        .links a:hover {
+            background: rgba(150, 155, 175, 0.08);
+            border-color: rgba(180, 185, 205, 0.4);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            color: #555b6b;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            padding-top: 15px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 35px 15px;
+            }
+
+            .rule {
+                padding: 22px 20px 22px 62px;
+            }
+
+            .number {
+                left: 20px;
+                top: 22px;
+            }
+
+            .moon,
+            .moon::after {
+                width: 70px;
+                height: 70px;
+            }
+
+            .moon::after {
+                left: 18px;
+                top: -7px;
+            }
+
+            header {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header>
+            <div class="moon"></div>
+
+            <h1>Bah King</h1>
+
+            <div class="subtitle">
+                Regras da Noite
+            </div>
+
+            <div class="line"></div>
+        </header>
+
+        <p class="intro">
+            Seja bem-vindo ao nosso pequeno canto da noite.
+            Aqui a ideia é conversar, jogar, rir e compartilhar bons momentos.
+            Para manter esse espaço agradável para todos, existem algumas regras.
+        </p>
+
+        <section class="rules">
+
+            <article class="rule">
+                <span class="number">01</span>
+                <h2>Respeito</h2>
+                <p>
+                    Trate todos no chat com respeito. Discordâncias fazem parte,
+                    mas ataques pessoais, preconceito, assédio ou qualquer forma
+                    de desrespeito não serão tolerados.
+                </p>
+            </article>
+
+            <article class="rule">
+                <span class="number">02</span>
+                <h2>Spam e Flood</h2>
+                <p>
+                    Evite enviar mensagens repetidas, excesso de CAPS,
+                    spam ou qualquer comportamento que atrapalhe a conversa.
+                </p>
+            </article>
+
+            <article class="rule">
+                <span class="number">03</span>
+                <h2>Backseat Gaming</h2>
+                <p>
+                    Evite dar dicas ou tentar controlar minhas decisões durante
+                    os jogos sem que eu tenha pedido. Se eu precisar de ajuda,
+                    eu aviso.
+                </p>
+            </article>
+
+            <article class="rule">
+                <span class="number">04</span>
+                <h2>Spoilers</h2>
+                <p>
+                    Não dê spoilers de jogos, filmes, séries ou qualquer outra
+                    história que esteja sendo comentada durante a live.
+                </p>
+            </article>
+
+            <article class="rule">
+                <span class="number">05</span>
+                <h2>Divulgação</h2>
+                <p>
+                    Não divulgue outros canais, servidores, redes sociais ou
+                    conteúdos sem autorização.
+                </p>
+            </article>
+
+            <article class="rule">
+                <span class="number">06</span>
+                <h2>Bom senso</h2>
+                <p>
+                    Nem tudo precisa estar escrito nas regras.
+                    Use o bom senso, respeite o ambiente e as pessoas que
+                    estão compartilhando essa noite com você.
+                </p>
+            </article>
+
+        </section>
+
+        <p class="closing">
+            “A noite é longa.<br>
+            Fique à vontade, respeite quem está ao seu lado
+            e aproveite a estadia.”
+        </p>
+
+        <div class="links">
+            <a href="#" target="_blank">Twitch</a>
+            <a href="#" target="_blank">Discord</a>
+        </div>
+
+        <footer>
+            © Bah King · Um canto perdido na noite
+        </footer>
+
+    </main>
+
+</body>
+</html>
